@@ -1,0 +1,12 @@
+sudo tc qdisc add dev wlan0 root netem loss 100%
+sleep 2s
+sudo sudo tc qdisc del dev wlan0 root netem
+sleep 4s
+sudo tc qdisc add dev wlan0 root netem loss 100%
+sleep 4s
+sudo sudo tc qdisc del dev wlan0 root netem
+sleep 4s
+sudo tc qdisc add dev wlan0 root netem loss 100%
+sleep 4s
+sudo sudo tc qdisc del dev wlan0 root netem
+sleep 4s
