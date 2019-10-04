@@ -1,0 +1,26 @@
+ public static void countSort(char seq[])
+    {
+         int count[] = new int[26];
+         char result [] = new char[seq.length];
+         for(int i = 0 ; i < seq.length ; i++)
+         {
+             count[(int)seq[i] - 'a'] += 1;
+         }
+         for(int i = 1 ; i < count.length ; i++)
+         {
+              count[i] += count[i-1];
+         }
+         
+         
+         for(int i = 0 ; i < seq.length ; i++)
+         {
+           result[--count[(int)seq[i] - 'a']] = seq[i];
+            // System.out.print(result[count[(int)seq[i] - 'a']]);
+            // System.out.print(count[(int)seq[i] - 'a']);
+        
+         }
+         
+        for(int i = 0 ; i < seq.length ; i++)
+         {
+           seq[i] = result[i];
+         }
