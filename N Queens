@@ -1,0 +1,79 @@
+#include<iostream>
+using namespace std;
+
+bool isQueenSafe(int chess[][10], int row, int col,int n){
+       //checking col
+       for(int i=0;i<row;i++)
+       {
+           if(chess[i][col]==1)
+           {
+               return false;
+           }
+       }
+       //left diagonal
+       int x=row;
+       int y=col;
+       while(x>=0 && y>=0)
+       {
+           if(chess[x][y]==1){
+           return false;}
+           x--;
+           y--;
+       }
+       //right diagonal
+         x=row;
+        y=col;
+       while(x>=0 && y<n)
+       {
+           if(chess[x][y]==1){
+           return false;}
+           x--;
+           y++;
+       }
+
+        return true;
+    }
+     bool printNQueens(int chess[][10],int row,int n){
+
+        if(row == n){
+      //      cout<<qsf<<".";
+      for(int i=0;i<n;i++){
+          for(int j=0;j<n;j++)
+          {
+              if(chess[i][j]==1)
+              {
+                  cout<<" Q ";
+              }
+              else
+              {
+                  cout<<" . ";
+              }
+          }
+          cout<<endl;
+      }
+      cout<<endl<<endl;
+
+            return false;
+
+        }
+        for(int col = 0; col < n; col++){
+            if( isQueenSafe(chess, row, col,n) == true){
+                chess[row][col] = 1;
+              bool ans= printNQueens(chess, row + 1,n);
+              if(ans)
+              {
+                  return true;
+              }
+                chess[row][col] = 0;
+            }
+        }
+        return false;
+    }
+
+int main()
+{
+int n;
+cin>>n;
+int chess[10][10]={0};
+        printNQueens(chess,0,n);
+    }
